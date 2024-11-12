@@ -1,7 +1,7 @@
 package by.it_academy.jd2.finance.user_service.service;
 
-import by.it_academy.jd2.finance.libs.shared_lib.dto.PageDto;
 import by.it_academy.jd2.finance.libs.shared_lib.dto.PageOf;
+import by.it_academy.jd2.finance.user_service.service.dto.PageDto;
 import by.it_academy.jd2.finance.user_service.service.dto.UserCreateDto;
 import by.it_academy.jd2.finance.user_service.service.dto.UserOutDto;
 import by.it_academy.jd2.finance.user_service.service.dto.UserUpdateDto;

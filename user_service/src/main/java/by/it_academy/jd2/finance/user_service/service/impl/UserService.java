@@ -1,11 +1,11 @@
 package by.it_academy.jd2.finance.user_service.service.impl;
 
-import by.it_academy.jd2.finance.libs.shared_lib.dto.PageDto;
 import by.it_academy.jd2.finance.libs.shared_lib.dto.PageOf;
 import by.it_academy.jd2.finance.libs.shared_lib.exception.ApplicationException;
 import by.it_academy.jd2.finance.user_service.repository.IUserRepository;
 import by.it_academy.jd2.finance.user_service.repository.entity.User;
 import by.it_academy.jd2.finance.user_service.service.IUserService;
+import by.it_academy.jd2.finance.user_service.service.dto.PageDto;
 import by.it_academy.jd2.finance.user_service.service.dto.UserCreateDto;
 import by.it_academy.jd2.finance.user_service.service.dto.UserOutDto;
 import by.it_academy.jd2.finance.user_service.service.dto.UserUpdateDto;
