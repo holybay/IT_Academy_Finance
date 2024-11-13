@@ -1,6 +1,7 @@
 package by.it_academy.jd2.finance.user_service.controller;
 
 import by.it_academy.jd2.finance.libs.shared_lib.dto.PageOf;
+import by.it_academy.jd2.finance.libs.shared_lib.util.Util;
 import by.it_academy.jd2.finance.user_service.service.IUserService;
 import by.it_academy.jd2.finance.user_service.service.dto.PageDto;
 import by.it_academy.jd2.finance.user_service.service.dto.UserCreateDto;
@@ -17,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @RestController
@@ -56,10 +56,10 @@ public class UserServiceController {
 
     @PutMapping("/{uuid}/dt_update/{dt_update}")
     public ResponseEntity<HttpStatus> update(@PathVariable(PATH_VAR_ID_NAME) UUID id,
-                                             @PathVariable(PATH_VAR_DT_UPDATE) LocalDateTime updatedAt,
+                                             @PathVariable(PATH_VAR_DT_UPDATE) long updatedAt,
                                              @RequestBody UserUpdateDto updateDto) {
         updateDto.setId(id);
-        updateDto.setUpdatedAt(updatedAt);
+        updateDto.setUpdatedAt(Util.longToLocalDateTime(updatedAt));
         userService.update(updateDto);
         return new ResponseEntity<>(HttpStatus.OK);
     }

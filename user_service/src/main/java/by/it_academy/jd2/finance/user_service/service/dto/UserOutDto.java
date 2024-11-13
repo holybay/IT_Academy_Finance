@@ -1,8 +1,10 @@
 package by.it_academy.jd2.finance.user_service.service.dto;
 
+import by.it_academy.jd2.finance.libs.shared_lib.util.CustomLocalDateTimeSerializer;
 import by.it_academy.jd2.finance.user_service.repository.entity.EUserRole;
 import by.it_academy.jd2.finance.user_service.repository.entity.EUserStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -14,9 +16,11 @@ public class UserOutDto {
     private UUID id;
 
     @JsonProperty("dt_create")
+    @JsonSerialize(using = CustomLocalDateTimeSerializer.class)
     private LocalDateTime createdAt;
 
     @JsonProperty("dt_update")
+    @JsonSerialize(using = CustomLocalDateTimeSerializer.class)
     private LocalDateTime updatedAt;
 
     private String mail;
