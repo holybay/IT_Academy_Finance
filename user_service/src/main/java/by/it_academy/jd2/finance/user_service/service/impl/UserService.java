@@ -10,6 +10,7 @@ import by.it_academy.jd2.finance.user_service.service.dto.UserCreateDto;
 import by.it_academy.jd2.finance.user_service.service.dto.UserOutDto;
 import by.it_academy.jd2.finance.user_service.service.dto.UserUpdateDto;
 import by.it_academy.jd2.finance.user_service.service.mapper.UserMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -24,6 +25,7 @@ public class UserService implements IUserService {
     private final IUserRepository userRepository;
     private final UserMapper userMapper;
 
+    @Autowired
     public UserService(IUserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;

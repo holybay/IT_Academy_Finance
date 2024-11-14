@@ -7,6 +7,7 @@ import by.it_academy.jd2.finance.user_service.service.dto.PageDto;
 import by.it_academy.jd2.finance.user_service.service.dto.UserCreateDto;
 import by.it_academy.jd2.finance.user_service.service.dto.UserOutDto;
 import by.it_academy.jd2.finance.user_service.service.dto.UserUpdateDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +29,7 @@ public class UserServiceController {
     public static final String PATH_VAR_DT_UPDATE = "dt_update";
     private final IUserService userService;
 
+    @Autowired
     public UserServiceController(IUserService userService) {
         this.userService = userService;
     }
