@@ -7,6 +7,9 @@ import by.it_academy.jd2.finance.user_service.service.dto.PageDto;
 import by.it_academy.jd2.finance.user_service.service.dto.UserCreateDto;
 import by.it_academy.jd2.finance.user_service.service.dto.UserOutDto;
 import by.it_academy.jd2.finance.user_service.service.dto.UserUpdateDto;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,8 +50,11 @@ public class UserServiceController {
     }
 
     @GetMapping
-    public ResponseEntity<PageOf<UserOutDto>> getAll(@RequestParam(required = false, defaultValue = "0") int page,
-                                                     @RequestParam(required = false, defaultValue = "20") int size) {
+    public ResponseEntity<PageOf<UserOutDto>> getAll(
+            @RequestParam(required = false, defaultValue = "0") @Valid @PositiveOrZero(message =
+                    "Page value must be greater than zero!") int page,
+            @RequestParam(required = false, defaultValue = "20") @Valid @Positive(message =
+                    "Page size must not be negative or zero!") int size) {
         PageOf<UserOutDto> users = userService.getAll(PageDto.builder()
                                                              .setPage(page)
                                                              .setSize(size)
