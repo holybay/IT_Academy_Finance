@@ -1,7 +1,7 @@
 package by.it_academy.jd2.finance.user_service.controller;
 
 import by.it_academy.jd2.finance.libs.shared_lib.dto.PageOf;
-import by.it_academy.jd2.finance.libs.shared_lib.util.Util;
+import by.it_academy.jd2.finance.libs.shared_lib.util.DateUtil;
 import by.it_academy.jd2.finance.user_service.service.IUserService;
 import by.it_academy.jd2.finance.user_service.service.dto.PageDto;
 import by.it_academy.jd2.finance.user_service.service.dto.UserCreateDto;
@@ -61,7 +61,7 @@ public class UserServiceController {
                                              @PathVariable(PATH_VAR_DT_UPDATE) long updatedAt,
                                              @RequestBody UserUpdateDto updateDto) {
         updateDto.setId(id);
-        updateDto.setUpdatedAt(Util.longToLocalDateTime(updatedAt));
+        updateDto.setUpdatedAt(DateUtil.longToLocalDateTime(updatedAt));
         userService.update(updateDto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
