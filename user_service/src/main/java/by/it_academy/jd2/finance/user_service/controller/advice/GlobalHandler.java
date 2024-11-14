@@ -3,7 +3,7 @@ package by.it_academy.jd2.finance.user_service.controller.advice;
 
 import by.it_academy.jd2.finance.libs.shared_lib.exception.ApplicationStructuredException;
 import by.it_academy.jd2.finance.libs.shared_lib.exception.dto.AppExceptionDtoSimple;
-import by.it_academy.jd2.finance.libs.shared_lib.exception.dto.AppExceptionDtoStructured;
+import by.it_academy.jd2.finance.libs.shared_lib.util.ExceptionDtoUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -24,8 +24,6 @@ public class GlobalHandler {
 
     @ExceptionHandler
     public ResponseEntity<List<AppExceptionDtoSimple>> handle(Exception e) {
-        List<AppExceptionDtoSimple> errors = new ArrayList<>();
-        errors.add(new AppExceptionDtoSimple(e.getMessage()));
-        return new ResponseEntity<>(errors, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(ExceptionDtoUtil.getAppExceptionSimpleDto(e), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
