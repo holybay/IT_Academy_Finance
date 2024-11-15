@@ -1,5 +1,7 @@
 package by.it_academy.jd2.finance.user_service.service.mapper;
 
+import by.it_academy.jd2.finance.user_service.repository.entity.EUserRole;
+import by.it_academy.jd2.finance.user_service.repository.entity.EUserStatus;
 import by.it_academy.jd2.finance.user_service.repository.entity.User;
 import by.it_academy.jd2.finance.user_service.service.dto.UserCreateDto;
 import by.it_academy.jd2.finance.user_service.service.dto.UserOutDto;
@@ -16,8 +18,8 @@ public class UserMapper {
                    .setUpdatedAt(createDto.getUpdatedAt())
                    .setMail(createDto.getMail())
                    .setFio(createDto.getFio())
-                   .setRole(createDto.getRole())
-                   .setStatus(createDto.getStatus())
+                   .setRole(Enum.valueOf(EUserRole.class, createDto.getRole()))
+                   .setStatus(Enum.valueOf(EUserStatus.class, createDto.getStatus()))
                    .setPassword(createDto.getPassword())
                    .build();
     }
@@ -28,8 +30,8 @@ public class UserMapper {
                    .setUpdatedAt(updateDto.getUpdatedAt())
                    .setMail(updateDto.getMail())
                    .setFio(updateDto.getFio())
-                   .setRole(updateDto.getRole())
-                   .setStatus(updateDto.getStatus())
+                   .setRole(Enum.valueOf(EUserRole.class, updateDto.getRole()))
+                   .setStatus(Enum.valueOf(EUserStatus.class, updateDto.getStatus()))
                    .setPassword(updateDto.getPassword())
                    .build();
     }
@@ -45,5 +47,4 @@ public class UserMapper {
                          .setStatus(entity.getStatus())
                          .build();
     }
-
 }

@@ -13,12 +13,12 @@ public class UserUpdateDto {
     private LocalDateTime updatedAt;
     private String mail;
     private String fio;
-    private EUserRole role;
-    private EUserStatus status;
+    private String role;
+    private String status;
     private String password;
 
-    private UserUpdateDto(UUID id, LocalDateTime updatedAt, String mail, String fio, EUserRole role,
-                          EUserStatus status, String password) {
+    private UserUpdateDto(UUID id, LocalDateTime updatedAt, String mail, String fio, String role,
+                          String status, String password) {
         this.id = id;
         this.updatedAt = updatedAt;
         this.mail = mail;
@@ -60,19 +60,19 @@ public class UserUpdateDto {
         this.fio = fio;
     }
 
-    public EUserRole getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(EUserRole role) {
+    public void setRole(String role) {
         this.role = role;
     }
 
-    public EUserStatus getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(EUserStatus status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

@@ -1,8 +1,5 @@
 package by.it_academy.jd2.finance.user_service.service.dto;
 
-import by.it_academy.jd2.finance.user_service.repository.entity.EUserRole;
-import by.it_academy.jd2.finance.user_service.repository.entity.EUserStatus;
-
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
@@ -14,12 +11,12 @@ public class UserCreateDto {
     private LocalDateTime updatedAt;
     private String mail;
     private String fio;
-    private EUserRole role;
-    private EUserStatus status;
+    private String role;
+    private String status;
     private String password;
 
     private UserCreateDto(UUID id, LocalDateTime createdAt, LocalDateTime updatedAt, String mail, String fio,
-                          EUserRole role, EUserStatus status, String password) {
+                          String role, String status, String password) {
         this.id = id;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
@@ -70,19 +67,19 @@ public class UserCreateDto {
         this.fio = fio;
     }
 
-    public EUserRole getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(EUserRole role) {
+    public void setRole(String role) {
         this.role = role;
     }
 
-    public EUserStatus getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(EUserStatus status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
