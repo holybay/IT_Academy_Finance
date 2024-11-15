@@ -1,5 +1,9 @@
 package by.it_academy.jd2.finance.user_service.service.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
@@ -9,10 +13,15 @@ public class UserCreateDto {
     private UUID id;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    @NotBlank(message = "Email can't be blank!")
+    @Email(message = "Provide your email!")
     private String mail;
+    @NotBlank(message = "FIO can't be blank!")
     private String fio;
     private String role;
     private String status;
+    @NotBlank(message = "Password can't be blank!")
+    @Size(min = 8, message = "Min password length is 8 symbols!")
     private String password;
 
     private UserCreateDto(UUID id, LocalDateTime createdAt, LocalDateTime updatedAt, String mail, String fio,
