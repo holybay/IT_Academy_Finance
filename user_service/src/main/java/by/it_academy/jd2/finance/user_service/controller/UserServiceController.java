@@ -7,6 +7,7 @@ import by.it_academy.jd2.finance.user_service.service.dto.PageDto;
 import by.it_academy.jd2.finance.user_service.service.dto.UserCreateDto;
 import by.it_academy.jd2.finance.user_service.service.dto.UserOutDto;
 import by.it_academy.jd2.finance.user_service.service.dto.UserUpdateDto;
+import by.it_academy.jd2.finance.user_service.service.validator.UserExists;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
@@ -63,9 +64,9 @@ public class UserServiceController {
     }
 
     @PutMapping("/{uuid}/dt_update/{dt_update}")
-    public ResponseEntity<HttpStatus> update(@PathVariable(PATH_VAR_ID_NAME) UUID id,
+    public ResponseEntity<HttpStatus> update(@PathVariable(PATH_VAR_ID_NAME) @UserExists UUID id,
                                              @PathVariable(PATH_VAR_DT_UPDATE) long updatedAt,
-                                             @RequestBody UserUpdateDto updateDto) {
+                                             @RequestBody @Valid UserUpdateDto updateDto) {
         updateDto.setId(id);
         updateDto.setUpdatedAt(DateUtil.longToLocalDateTime(updatedAt));
         userService.update(updateDto);

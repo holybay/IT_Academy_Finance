@@ -1,7 +1,11 @@
 package by.it_academy.jd2.finance.user_service.service.dto;
 
+import by.it_academy.jd2.finance.libs.shared_lib.validation.EnumValidator;
 import by.it_academy.jd2.finance.user_service.repository.entity.EUserRole;
 import by.it_academy.jd2.finance.user_service.repository.entity.EUserStatus;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -11,10 +15,16 @@ public class UserUpdateDto {
 
     private UUID id;
     private LocalDateTime updatedAt;
+    @Email
     private String mail;
+    @NotBlank(message = "FIO can't be blank!")
     private String fio;
+    @EnumValidator(enumClass = EUserRole.class)
     private String role;
+    @EnumValidator(enumClass = EUserStatus.class)
     private String status;
+    @NotBlank(message = "Password can't be blank!")
+    @Size(min = 8, message = "Min password length is 8 symbols!")
     private String password;
 
     private UserUpdateDto(UUID id, LocalDateTime updatedAt, String mail, String fio, String role,
