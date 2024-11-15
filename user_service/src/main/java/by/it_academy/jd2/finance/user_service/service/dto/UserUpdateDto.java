@@ -15,7 +15,7 @@ public class UserUpdateDto {
 
     private UUID id;
     private LocalDateTime updatedAt;
-    @Email
+    @Email(message = "Not an email address!")
     private String mail;
     @NotBlank(message = "FIO can't be blank!")
     private String fio;
