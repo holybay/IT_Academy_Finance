@@ -7,6 +7,7 @@ import by.it_academy.jd2.finance.libs.shared_lib.exception.dto.StructuredExcepti
 import by.it_academy.jd2.finance.libs.shared_lib.util.ExceptionDtoUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.HandlerMethodValidationException;
@@ -46,6 +47,18 @@ public class GlobalHandler {
                                                   .map(er -> new StructuredExceptionDto(
                                                           er.getMethodParameter().getParameterName(),
                                                           er.getResolvableErrors().get(0).getDefaultMessage()))
+                                                  .toList();
+        AppExceptionDtoStructured out = new AppExceptionDtoStructured(errorList);
+        return new ResponseEntity<>(out, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<AppExceptionDtoStructured> handle(MethodArgumentNotValidException e) {
+        AppExceptionDtoStructured error = new AppExceptionDtoStructured();
+        List<StructuredExceptionDto> errorList = e.getBindingResult().getFieldErrors().stream()
+                                                  .map(er -> new StructuredExceptionDto(
+                                                          er.getField(),
+                                                          er.getDefaultMessage()))
                                                   .toList();
         AppExceptionDtoStructured out = new AppExceptionDtoStructured(errorList);
         return new ResponseEntity<>(out, HttpStatus.BAD_REQUEST);
