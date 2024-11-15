@@ -51,9 +51,9 @@ public class UserServiceController {
 
     @GetMapping
     public ResponseEntity<PageOf<UserOutDto>> getAll(
-            @RequestParam(required = false, defaultValue = "0") @Valid @PositiveOrZero(message =
+            @RequestParam(required = false, defaultValue = "0") @PositiveOrZero(message =
                     "Page value must be greater than zero!") int page,
-            @RequestParam(required = false, defaultValue = "20") @Valid @Positive(message =
+            @RequestParam(required = false, defaultValue = "20") @Positive(message =
                     "Page size must not be negative or zero!") int size) {
         PageOf<UserOutDto> users = userService.getAll(PageDto.builder()
                                                              .setPage(page)
